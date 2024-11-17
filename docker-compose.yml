@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+    meeting:
+        image: rushi30/meeting:latest  # Pulling your custom image from Docker Hub
+        container_name: meeting      # Naming the container as 'meeting'
+        hostname: meeting              # Set hostname to 'meeting'
+        volumes:
+            - .env:/src/.env:ro        # Mapping environment file as read-only
+            # Optional volumes - Uncomment these if you need them
+            # - ./app/:/src/app/:ro
+            # - ./public/:/src/public/:ro
+        restart: unless-stopped         # Automatically restart the container unless stopped
+        ports:
+            - '3000:3000'               # Mapping the container port 3000 to host port 3000
+# Uncomment the following block to use Traefik for TLS certificates
+#   expose:
+#     - 3000
+#   labels:
+#     - "traefik.enable=true"
+#     - "traefik.http.routers.meeting.rule=Host(`meeting.example.com`)"
+#     - "traefik.http.routers.meeting.entrypoints=websecure"
+#     - "traefik.http.routers.meeting.tls.certresolver=myresolver"
+#     - "traefik.http.services.meeting.loadbalancer.server.port=3000"

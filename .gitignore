@@ -17,7 +17,7 @@ package-lock.json
 # personal env
 .env
 docker-push.sh
-docker-compose.yml
+
 output
 env.txt
 
