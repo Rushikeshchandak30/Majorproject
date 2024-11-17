@@ -97,7 +97,7 @@ if [ "$answer" != "${answer#[Yy]}" ] ;then
 
         log "Get latest official image from Docker Hub"
 
-        docker rushi30/meeting:latest
+        docker pull rushi30/meeting2:latest
     else
         log "Build image from source"
 

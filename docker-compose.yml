@@ -2,7 +2,7 @@ version: '3'
 
 services:
     meeting:
-        image: rushi30/meeting:latest  # Pulling your custom image from Docker Hub
+        image: rushi30/meeting2:latest  # Pulling your custom image from Docker Hub
         container_name: meeting      # Naming the container as 'meeting'
         hostname: meeting              # Set hostname to 'meeting'
         volumes:
