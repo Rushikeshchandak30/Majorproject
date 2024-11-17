@@ -15,7 +15,7 @@ package-lock.json
 .cache
 
 # personal env
-.env
+
 docker-push.sh
 
 output
