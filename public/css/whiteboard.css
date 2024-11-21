@@ -1,31 +1,23 @@
 /*--------------------------------------------------------------
-# Whiteboard
+# Whiteboard - Enhanced Styles
 --------------------------------------------------------------*/
 
 #whiteboard {
     z-index: 11;
     position: fixed;
     margin: auto;
-    padding: 10px;
+    padding: 15px;
     width: var(--wb-width);
     height: var(--wb-height);
-    background: var(--wb-bg);
-    border: var(--border);
-    box-shadow: var(--box-shadow);
-    border-radius: 10px;
-    /* center */
+    background: linear-gradient(145deg, #ffffff, #f0f0f0);
+    border: 1px solid #e0e0e0;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15);
+    border-radius: 15px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    /* fade in */
-    -webkit-animation: fadeIn ease-in 1;
-    -moz-animation: fadeIn ease-in 1;
     animation: fadeIn ease-in 1;
-    -webkit-animation-fill-mode: forwards;
-    -moz-animation-fill-mode: forwards;
     animation-fill-mode: forwards;
-    -webkit-animation-duration: 1s;
-    -moz-animation-duration: 1s;
     animation-duration: 1s;
     overflow: hidden;
 }
@@ -33,9 +25,11 @@
 .whiteboard-header {
     display: flex;
     justify-content: space-between;
-    padding: 5px;
+    align-items: center;
+    padding: 10px;
     border-radius: 10px;
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(8px);
     color: #ffffff;
     cursor: move;
 }
@@ -43,30 +37,34 @@
 .whiteboard-header-title {
     display: flex;
     align-items: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    letter-spacing: 0.5px;
 }
 
 #whiteboardUnlockBtn,
 #whiteboardLockBtn {
     display: none;
-    margin-left: 3px;
-    margin-right: 3px;
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
 .whiteboard-header-title button,
 .whiteboard-header-options button {
-    padding: 10px;
+    padding: 8px 12px;
     font-size: 1rem;
     background: transparent;
-    color: #fff;
-    border: none !important;
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.5);
     border-radius: 5px;
     transition: all 0.3s ease-in-out;
-    transition: background 0.23s;
 }
 
 .whiteboard-header-title button:hover,
 .whiteboard-header-options button:hover {
-    background: var(--body-bg);
+    background: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    transform: scale(1.05);
 }
 
 .whiteboardColorPicker {
@@ -74,46 +72,17 @@
     -moz-appearance: none;
     appearance: none;
     padding: 0;
-    width: 20px;
-    height: 15px;
-    margin: 2px;
-    border-radius: 20px;
-    border: solid 0.5px #afadad38;
+    width: 25px;
+    height: 20px;
+    margin: 4px;
+    border-radius: 50%;
+    border: solid 1px #d0d0d0;
     cursor: pointer;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 .whiteboardColorPicker:hover {
-    transform: var(--btns-hover-scale);
-    transition: all 0.3s ease-in-out;
-}
-.whiteboardColorPicker::-webkit-color-swatch {
-    border: none;
-    border-radius: 20px;
-    padding: 0;
-}
-.whiteboardColorPicker::-webkit-color-swatch-wrapper {
-    border: none;
-    border-radius: 20px;
-    padding: 0;
-}
-.whiteboardColorPicker::-moz-color-swatch {
-    border: none;
-    border-radius: 20px;
-    padding: 0;
-}
-.whiteboardColorPicker::-moz-color-swatch-wrapper {
-    border: none;
-    border-radius: 20px;
-    padding: 0;
-}
-.whiteboardColorPicker::color-swatch {
-    border: none;
-    border-radius: 20px;
-    padding: 0;
-}
-.whiteboardColorPicker::color-swatch-wrapper {
-    border: none;
-    border-radius: 20px;
-    padding: 0;
+    transform: scale(1.2);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.15);
 }
 
 .hidden {
@@ -124,14 +93,14 @@
     display: block;
 }
 
-/* Styles for the dropdown button */
+/* Dropdown Button */
 .whiteboard-dropdown {
     margin-left: 5px;
     float: right;
     position: relative;
 }
 
-/* Styles for the dropdown menu container */
+/* Dropdown Menu */
 .whiteboard-dropdown-menu {
     z-index: 12;
     position: absolute;
@@ -139,51 +108,61 @@
     top: 100%;
     right: 0;
     display: none;
-    border-radius: 5px;
-    background: var(--body-bg);
-    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); */
-    box-shadow: var(--box-shadow);
-    border: none;
+    border-radius: 8px;
+    background: linear-gradient(145deg, #f9f9f9, #e0e0e0);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    border: 1px solid #ccc;
     overflow-y: auto;
     overflow-x: hidden;
-    max-height: calc(var(--wb-height) * 1px) !important;
+    max-height: calc(var(--wb-height) * 0.8px) !important;
+    padding: 5px 0;
 }
 
-/* Styles for dropdown menu items */
+/* Dropdown Menu Items */
 .whiteboard-dropdown-menu button {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    width: 160px;
-    font-size: 0.8em;
+    width: 180px;
+    font-size: 0.9rem;
     text-align: left;
     padding: 10px;
     border: none;
     background: none;
     cursor: pointer;
+    transition: all 0.3s ease-in-out;
 }
 
 .whiteboard-dropdown-menu button:hover {
-    background: var(--select-bg) !important;
+    background: #4caf50;
+    color: #ffffff;
+    transform: scale(1.05);
+}
+
+/* Icons and SVGs */
+.whiteboard-dropdown-menu button i,
+.whiteboard-dropdown-menu button svg {
+    margin-right: 10px;
+    color: #6c6c6c;
+}
+
+.whiteboard-dropdown-menu button i:hover,
+.whiteboard-dropdown-menu button svg:hover {
     color: #ffffff;
 }
 
-/* Styles for icons and SVGs inside buttons */
-.whiteboard-dropdown-menu button i,
-.whiteboard-dropdown-menu button svg {
-    margin-right: 8px;
-}
-
-/* Styles for list items */
+/* List Items */
 .whiteboard-dropdown-menu li {
     padding: 8px 16px;
+    transition: all 0.3s ease-in-out;
 }
 
 .whiteboard-dropdown-menu li:hover {
-    background: var(--body-bg);
+    background: #4caf50;
+    color: #ffffff;
 }
 
-/* Ensuring dropdown buttons within list items have transparent background */
+/* Ensure transparent background for buttons in list */
 .whiteboard-dropdown-menu li button {
     background: transparent;
     padding: 0;

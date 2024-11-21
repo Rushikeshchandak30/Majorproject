@@ -44,7 +44,7 @@ const images = {
     leave: '../images/leave-room.png',
     vaShare: '../images/va-share.png',
     about: '../images/mirotalk-logo.gif',
-    feedback: '../images/feedback.png',
+    // feedback: '../images/feedback.png',
     forbidden: '../images/forbidden.png',
     avatar: '../images/mirotalk-logo.png',
     recording: '../images/recording.png',
@@ -163,7 +163,7 @@ const buttons = {
         showFileShareBtn: true,
         showDocumentPipBtn: showDocumentPipBtn,
         showMySettingsBtn: true,
-        showAboutBtn: true, // Please keep me always true, Thank you!
+        showAboutBtn: false, // Please keep me always true, Thank you!
     },
     chat: {
         showTogglePinBtn: true,
@@ -731,7 +731,7 @@ let isHostProtected = false; // Username and Password required to initialize roo
 let isPeerAuthEnabled = false; // Username and Password required in the URL params to join room
 
 // survey
-let surveyActive = true; // when leaving the room give a feedback, if false will be redirected to newcall page
+let surveyActive = false; // when leaving the room give a feedback, if false will be redirected to newcall page
 let surveyURL = 'https://www.questionpro.com/t/AUs7VZq00L';
 
 // Redirect on leave room
@@ -879,7 +879,7 @@ function refreshMainButtonsToolTipPlacement() {
     setTippy(fileShareBtn, 'Share file', placement);
     setTippy(documentPiPBtn, 'Toggle picture in picture', placement);
     setTippy(mySettingsBtn, 'Open the settings', placement);
-    setTippy(aboutBtn, 'About this project', placement);
+    // setTippy(aboutBtn, 'About this project', placement);
 
     setTippy(hideMeBtn, 'Toggle hide myself from the room view', bottomButtonsPlacement);
     setTippy(audioBtn, useAudio ? 'Stop the audio' : 'My audio is disabled', bottomButtonsPlacement);
@@ -4448,7 +4448,7 @@ function manageLeftButtons() {
     setMyFileShareBtn();
     setDocumentPiPBtn();
     setMySettingsBtn();
-    setAboutBtn();
+    // setAboutBtn();
     setLeaveRoomBtn();
 }
 
@@ -5350,11 +5350,11 @@ function setMySettingsBtn() {
 /**
  * About button click event
  */
-function setAboutBtn() {
-    aboutBtn.addEventListener('click', (e) => {
-        showAbout();
-    });
-}
+// function setAboutBtn() {
+//     aboutBtn.addEventListener('click', (e) => {
+//         showAbout();
+//     });
+// }
 
 /**
  * Leave room button click event
@@ -10622,6 +10622,11 @@ function leaveRoom() {
 /**
  * Ask for feedback when room exit
  */
+function leaveRoom() {
+    openURL('/newcall'); // Directly redirect to the desired link
+}
+
+// If you still need the feedback functionality for other cases, you can keep it as it is:
 function leaveFeedback() {
     Swal.fire({
         allowOutsideClick: false,
@@ -10647,6 +10652,10 @@ function leaveFeedback() {
 function redirectOnLeave() {
     redirectActive ? openURL(redirectURL) : openURL('/newcall');
 }
+
+// Usage: Replace the leave room button's event listener to use `leaveRoom` instead of `leaveFeedback`.
+document.getElementById('leaveRoomButton').addEventListener('click', leaveRoom);
+
 
 /**
  * Make Obj draggable: https://www.w3schools.com/howto/howto_js_draggable.asp
