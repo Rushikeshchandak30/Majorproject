@@ -3,7 +3,7 @@ version: '3'
 services:
     meeting:
         image: rushi30/meeting2:latest  # Pulling your custom image from Docker Hub
-        container_name: meeting2     # Naming the container as 'meeting'
+        container_name: meeting3gi     # Naming the container as 'meeting'
         hostname: meeting              # Set hostname to 'meeting'
         volumes:
             - .env:/src/.env:ro        # Mapping environment file as read-only
